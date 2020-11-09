@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 記事一覧へアクセス
+Route::get('/', 'ArticleController@index');
