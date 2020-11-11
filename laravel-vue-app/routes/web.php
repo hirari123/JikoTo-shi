@@ -11,5 +11,8 @@
 |
 */
 
+// 認証関連
+Auth::routes();
+
 // 記事一覧へアクセス
 Route::get('/', 'ArticleController@index');
