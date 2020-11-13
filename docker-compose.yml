@@ -34,3 +34,10 @@ services:
       TZ: 'Asia/Tokyo'
     volumes:
       - docker-volume:/var/lib/mysql
+
+  # メール送信テスト用のコンテナ
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"
