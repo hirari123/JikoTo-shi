@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -61,5 +62,29 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         return view('articles.show', ['article'=>$article]);
+    }
+
+    // いいね機能
+    public function like(Request $request, Article $article)
+    {
+        // likesテーブルのレコードを削除
+        $article->likes()->detach($request->user()->id);
+        // likesテーブルのレコードを新規作成
+        $article->likes()->attach($request->user()->id);
+
+        return [
+            'id'=>$article->id,
+            'countLikes'=>$article->count_likes,
+        ];
+    }
+
+    public function unlink(Request $request, Article $article)
+    {
+        $article->likes()->detach($request->user()->id);
+
+        return [
+            'id'=>$article->id,
+            'countLikes'=>$article->count_likes,
+        ];
     }
 }
