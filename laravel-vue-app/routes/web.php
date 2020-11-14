@@ -23,3 +23,9 @@ Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->mi
 
 // 未ログインユーザーでも記事詳細画面を見れるようにする
 Route::resource('/articles', 'ArticleController')->only(['show']);
+
+// 「いいね」機能
+Route::prefix('articles')->name('articles.')->group(function() {
+  Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
+  Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
+});
