@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 // タグモデル
 class Tag extends Model
 {
-    //
+
+    
 }
