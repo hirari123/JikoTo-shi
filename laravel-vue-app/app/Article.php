@@ -38,5 +38,10 @@ class Article extends Model
         return $this->likes->count();
     }
 
+    // 記事モデルからタグモデルへのリレーションの作成
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
 
 }
