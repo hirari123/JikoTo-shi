@@ -62,7 +62,7 @@
       </a>
     </h3>
     <div class="card-text">
-      {!! nl2br(e( $article->body )) !!}
+      {!! nl2br(e( $article->content )) !!}
     </div>
   </div>
 

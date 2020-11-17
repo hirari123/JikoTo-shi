@@ -1,8 +1,14 @@
 <template>
   <div>
+    <input
+      type="hidden"
+      name="tags"
+      :value="tagsJson"
+    >
     <vue-tags-input
       v-model="tag"
       :tags="tags"
+      placeholder="タグを5個まで入力できます"
       :autocomplete-items="filteredItems"
       @tags-changed="newTags => tags = newTags"
     />
@@ -39,6 +45,10 @@ export default {
         return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
       });
     },
+
+    tagsJson() {
+      return JSON.stringify(this.tags)
+    },
   },
 };
 </script>
@@ -50,8 +60,8 @@ export default {
 <style lang="css">
   .vue-tags-input .ti-tag {
     background: transparent;
-    border: 1px solid #747373;
-    color: #747373;
+    border: 1px solid #05adad;
+    color: #05adad;
     margin-right: 4px;
     border-radius: 0px;
     font-size: 13px;
