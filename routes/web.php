@@ -24,6 +24,9 @@ Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->mi
 // 未ログインユーザーでも記事詳細画面を見れるようにする
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
+// ゲストログイン機能
+Route::get('/login/guest', 'Auth\LoginController@guestLogin');
+
 // 「いいね」機能
 Route::prefix('articles')->name('articles.')->group(function() {
   Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
@@ -32,3 +35,20 @@ Route::prefix('articles')->name('articles.')->group(function() {
 
 // タグ別記事一覧画面のルーティングを定義する
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
+
+// ユーザーページ
+Route::prefix('users')->name('users.')->group(function() {
+  Route::get('/{name}', 'UserController@show')->name('show');
+
+  // いいねタブが押された場合のユーザーページ表示
+  Route::get('/{name}/likes', 'UserController@likes')->name('likes');
+
+  Route::get('/{name}/followings', 'UserController@followings')->name('followings');
+  Route::get('/{name}/followers', 'UserController@followers')->name('followers');
+
+  // フォロー機能のルーティングを追加
+  Route::middleware('auth')->group(function() {
+    Route::put('/{name}/follow', 'UserController@follow')->name('follow');
+    Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
+  });
+});
