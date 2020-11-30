@@ -1,6 +1,6 @@
 <!-- ナビゲーションバー -->
 
-<nav class="navbar navbar-expand navbar-dark aqua-gradient">
+<nav class="navbar navbar-expand navbar-dark peach-gradient">
 
   <a class="navbar-brand" href="/"><i class="fas fa-user-clock"></i>JikoTo-shi</a>
 
