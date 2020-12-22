@@ -25,7 +25,7 @@ Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->mi
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
 // ゲストログイン機能
-Route::get('/login/guest', 'Auth\LoginController@guestLogin');
+Route::get('login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
 // 「いいね」機能
 Route::prefix('articles')->name('articles.')->group(function() {
