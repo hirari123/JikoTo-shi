@@ -20,7 +20,9 @@
 
     @guest
     <li class="nav-item">
-      <a class="nav-link" href="/login/guest"><i class="fas fa-user-shield"></i>かんたんログイン</a>
+      <input type="hidden"  name="email" value="登録したデータ">
+      <input type="hidden"  name="password" value="登録したデータ">
+      <a class="nav-link" href="{{ route('login.guest') }}"><i class="fas fa-user-shield"></i>かんたんログイン</a>
     </li>
     @endguest
 
