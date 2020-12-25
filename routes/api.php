@@ -15,6 +15,6 @@ use Illuminate\Http\Request;
 
 // 使わないので削除↓
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
